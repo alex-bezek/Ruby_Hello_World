@@ -62,26 +62,21 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-CMD
-    #sudo apt-get update
-    #sudo apt-get install curl -y
-    #\curl -sSL https://get.rvm.io | bash
-    #source /home/vagrant/.rvm/scripts/rvm
-    #rvm requirements
-    #rvm install 1.9.3
-    #rvm install 2.1
-    #rvm use 2.1 --default
-    #gem install bundler
-    #sudo apt-get install nodejs
+    sudo apt-get update
+    sudo apt-get install curl -y
 
-    # curl -L https://get.rvm.io | bash -s stable --ruby
-    #source ~/.profile
-    #[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-    #gem install rails
+    # Install rvm so we can get the latest version of Ruby
+    \curl -sSL https://get.rvm.io | bash
+    source /home/vagrant/.rvm/scripts/rvm
+    rvm requirements
+    # rvm install 1.9.3
+    rvm install 2.1
+    rvm use 2.1 --default
+    gem install bundler
+    gem install rails
 
-    #sudo apt-get install ruby-full -y
-
-
-
+    # Rails’ Asset Pipeline needs a JavaScript runtime. There are several options, but let’s install NodeJS:
+    sudo apt-get install nodejs -y
   CMD
 
 end
