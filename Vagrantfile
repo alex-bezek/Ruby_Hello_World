@@ -85,7 +85,7 @@ Vagrant.configure(2) do |config|
 
     echo INSTALLING NODEJS FOR ASSET PIPELINE
     # Rails’ Asset Pipeline needs a JavaScript runtime. There are several options, but let’s install NodeJS:
-	sudo yum install epel-release
+	sudo yum install epel-release -y
     sudo yum install nodejs -y
   CMD
 
