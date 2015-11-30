@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "hashicorp/precise32"
+  config.vm.box = "bento/centos-6.7"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -63,8 +63,8 @@ Vagrant.configure(2) do |config|
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-CMD
     cd ../../vagrant
-    sudo apt-get update
-    sudo apt-get install curl -y
+    sudo yum update
+    sudo yum install curl -y
 
     # Install rvm so we can get the latest version of Ruby
     echo CURL TO GET RVM
@@ -85,7 +85,8 @@ Vagrant.configure(2) do |config|
 
     echo INSTALLING NODEJS FOR ASSET PIPELINE
     # Rails’ Asset Pipeline needs a JavaScript runtime. There are several options, but let’s install NodeJS:
-    sudo apt-get install nodejs -y
+	sudo yum install epel-release
+    sudo yum install nodejs -y
   CMD
 
 end
